@@ -2,8 +2,8 @@ package Game;
 
 import People.Person;
 import Rooms.Room;
-import Rooms.UnluckyRoom;
-import Rooms.WinningRoom;
+import Rooms.Diamonds;
+import Rooms.Gold;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class Runner {
 
     public static void main(String[] args)
     {
-        Room[][] building = new Room[5][5];
+        Room[][] building = new Room[3][8];
 
         //Fill the building with normal rooms
         for (int x = 0; x<building.length; x++)
@@ -32,22 +32,20 @@ public class Runner {
 
         System.out.println("You were going through your routine on mining and suddenly a boulder chases you!");
         System.out.println("You were forced to jump in a hole and barely escape, however you can hear the boulder slowly coming in");
-        System.out.println("Luckily, at the end of the tunnel, you see light, better yet however, you see gold and diamond all around you");
-        System.out.println("However, you can't see anything and must escape while grabbing as much fortunate as you can!");
-        System.out.println("Run to the right while grabbing as much diamond and gold as you can.");
+        System.out.println("Luckily, at the end of the tunnel, you see light, better yet however, you see gold and diamond shining all around you");
+        System.out.println("You can't see anything and must escape while grabbing as much fortunate as you can!");
+        System.out.println("Run to the right while grabbing as much diamond and gold as you can. You have 7 turns to live");
 
         System.out.println(board);
 
-        //Create a random winning room.
         int x = (int)(Math.random()*building.length);
         int y = (int)(Math.random()*building.length);
-        building[x][y] = new WinningRoom(x, y);
+        building[x][y] = new Gold(x, y);
         int z = (int)(Math.random()*building.length);
         int i = (int)(Math.random()*building.length);
-        building[z][i] = new UnluckyRoom(z,i);
+        building[z][i] = new Diamonds(z,i);
 
-        //Setup player 1 and the input scanner
-        Person player1 = new Person("FirstName", "FamilyName", 0,0);
+        Person player1 = new Person("FirstName", "FamilyName", 0,0,0);
         building[0][0].enterRoom(player1);
         Scanner in = new Scanner(System.in);
         while(gameOn)

@@ -1,12 +1,10 @@
 package Rooms;
-
-import Game.Runner;
 import People.Person;
 
-public class WinningRoom extends Room
+public class Gold extends Room
 {
 
-    public WinningRoom(int x, int y) {
+    public Gold(int x, int y) {
         super(x, y);
 
     }
@@ -21,8 +19,8 @@ public class WinningRoom extends Room
         occupant = x;
         x.setxLoc(this.xLoc);
         x.setyLoc(this.yLoc);
-        System.out.println("You found the winning room! Ten points for Gryffindor.");
-        Runner.gameOff();
+        System.out.println("You found gold! +1 point.");
+        x.setPoints(+1);
     }
 
 
